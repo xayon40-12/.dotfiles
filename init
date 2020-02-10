@@ -1,0 +1,12 @@
+#!/bin/bash
+LS=$(ls | sed -e 's/^init$//')
+PWD=$(pwd)
+cd
+for i in $LS; do
+    if [[ -f ".$i" ]]; then
+        mv ".$i" ".$i.OLD"
+    fi
+    if [[ ! -L ".$i" ]]; then 
+        ln -s "$i" ".$i"
+    fi
+done
