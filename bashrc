@@ -58,3 +58,6 @@ alias dev='cd $(cat ~/.current_dev)'
 
 #disable legacy terminal xon (ctrl-s and ctrl-q)
 stty -ixon
+
+#alias to edit vimrc
+alias vimrc='vim ~/.vim/vimrc'

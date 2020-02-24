@@ -1,0 +1,7 @@
+#!/bin/bash
+    
+if [[ -n $(setxkbmap -query | grep fr -o) ]]; then 
+    setxkbmap dvorak
+else
+    setxkbmap fr
+fi
