@@ -1,12 +1,16 @@
 #!/bin/bash
-list=$(ls | sed -e 's/^init$//')
+cd $(dirname "$(readlink -f "$0")")
+list=$(find `ls | sed -e 's/$init^//'` -type f)
 dir="$(pwd)"
 cd
 for i in $list; do
-    if [[ -f ".$i" ]]; then
-        mv ".$i" ".$i.OLD"
-    fi
     if [[ ! -L ".$i" ]]; then
+        if [[ -f ".$i" ]]; then
+            mv ".$i" ".$i.OLD"
+        fi
+        if [[ $i =~ / ]]; then
+            mkdir -p ".${i%/*}"
+        fi
         ln -s "$dir/$i" ".$i"
     fi
 done
