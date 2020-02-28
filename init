@@ -1,6 +1,6 @@
 #!/bin/bash
 cd $(dirname "$(readlink -f "$0")")
-list=$(find `ls | sed -e 's/$init^//'` -type f)
+list=$(find `ls | sed -e 's/^init$//'` -type f)
 dir="$(pwd)"
 cd
 for i in $list; do

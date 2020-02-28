@@ -43,7 +43,6 @@ alias open="xdg-open"
 alias o='xdg-open >/dev/null 2>&1'
 
 # rust
-source $HOME/.cargo/env
 alias cb="cargo build"
 alias cr="cargo run"
 alias cbr="cargo build --release"
