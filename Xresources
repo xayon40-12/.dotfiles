@@ -6,8 +6,6 @@ URxvt.font: xft:DejaVu Sans Mono
 !URxvt.font: xft:M+ 1m:size=8:style=heavy,Regular
 URxvt.scrollBar: off
 
-Xft*dpi: 192
-!Xft*dpi: 100
 Xft.lcdfilter:  lcddefault
 !Xft*antialias: true
 !Xft*rgba: rgb

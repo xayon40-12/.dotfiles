@@ -1,19 +1,8 @@
-
-#
-# This file is sourced by all *interactive* bash shells on startup,
-# including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
-
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]] ; then
-    # Shell is non-interactive.  Be done now!
-    return
+if [ "$(tty)" == /dev/tty1 ]
+then
+    exec startx
+    exit 0
 fi
-
-# Put your fun stuff here.
 
 if [[ -f ~/.bash_local ]] ; then
     . ~/.bash_local
@@ -43,7 +32,6 @@ alias open="xdg-open"
 alias o='xdg-open >/dev/null 2>&1'
 
 # rust
-source $HOME/.cargo/env
 alias cb="cargo build"
 alias cr="cargo run"
 alias cbr="cargo build --release"
