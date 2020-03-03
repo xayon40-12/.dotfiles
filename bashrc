@@ -40,6 +40,7 @@ alias ct="RUSTFLAGS=\"$RUSTFLAGS -A dead_code\" cargo test -- --nocapture"
 # utilities
 export PATH=~/u:$PATH
 alias dev='cd $(cat ~/.current_dev)'
+alias sdev='pwd > ~/.current_dev'
 
 #set vi mode
 #set -o vi
@@ -49,3 +50,7 @@ stty -ixon
 
 #alias to edit vimrc
 alias vimrc='vim ~/.vim/vimrc'
+
+
+# rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
