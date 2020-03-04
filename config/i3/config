@@ -45,11 +45,9 @@ bindsym $mod+c exec "~/.keychange"
 bindsym XF86AudioRaiseVolume exec amixer set Master 3+
 bindsym XF86AudioLowerVolume exec amixer set Master 3-
 
-# ajust luminosity
-#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-bindsym XF86MonBrightnessUp exec xrandr --output `xrandr --current | grep -w connected | sed 's/ .*//'` --brightness 0.5
-bindsym XF86MonBrightnessDown exec xrandr --output `xrandr --current | grep -w connected | sed 's/ .*//'` --brightness 0.3
+# ajust luminosity (uses light-git aur package)
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # kill focused window
 bindsym $mod+apostrophe kill
