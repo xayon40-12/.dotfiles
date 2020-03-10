@@ -6,4 +6,5 @@ else
     xrdb < $HOME/.Xresources
 fi
 feh --bg-fill $HOME/.bgw.jpg
-exec i3
+
+TERMINAL=alacritty exec i3
