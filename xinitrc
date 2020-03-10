@@ -7,4 +7,4 @@ else
 fi
 feh --bg-fill $HOME/.bgw.jpg
 
-TERMINAL=alacritty exec i3
+WINIT_HIDPI_FACTOR=2 TERMINAL=alacritty exec i3
