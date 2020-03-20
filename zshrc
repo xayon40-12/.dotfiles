@@ -13,9 +13,25 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 bindkey -v
+export KEYTIMEOUT=1
 bindkey -M vicmd '?' history-incremental-pattern-search-backward
 bindkey -M vicmd '/' history-incremental-pattern-search-forward
 #bindkey '^F' history-incremental-pattern-search-backward
+
+# prompt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+zle -N zle-keymap-select
+function vi_mode_prompt_info() {
+  echo "${${KEYMAP/vicmd/[NORMAL]}/(main|viins)/[INSERT]}"
+}
+export PS1='%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f %(?..%F{red})%#%f '
+export RPS1='%F{magenta}$(vi_mode_prompt_info)%f'
 
 # ************************ USR CONFIG ************************
 
@@ -35,10 +51,7 @@ alias zshrc='vim ~/.zshrc'
 # color alias
 alias ls="ls --color=auto"
 alias grep='grep --color=auto'
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1='%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f %(?..%F{red})%#%f '
+
 
 #terminal clipboard (need to install xclip)
 alias pbcopy="xclip -selection c"
