@@ -9,6 +9,13 @@ fi
 
 # ************************ ZSH CONFIG ************************
 setopt PROMPT_SUBST
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+bindkey -v
+bindkey -M vicmd '?' history-incremental-pattern-search-backward
+bindkey -M vicmd '/' history-incremental-pattern-search-forward
+#bindkey '^F' history-incremental-pattern-search-backward
 
 # ************************ USR CONFIG ************************
 
@@ -42,6 +49,7 @@ alias open="xdg-open"
 alias o='xdg-open >/dev/null 2>&1'
 
 # rust
+docrs() { firefox "https://docs.rs/$1" }
 alias cb="cargo build"
 alias cr="cargo run"
 alias cbr="cargo build --release"
@@ -57,3 +65,6 @@ stty -ixon
 
 # rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# launch neofetch when terminal start
+#neofetch
