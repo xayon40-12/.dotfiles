@@ -14,9 +14,10 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 bindkey -v
 export KEYTIMEOUT=1
-bindkey -M vicmd '?' history-incremental-pattern-search-backward
-bindkey -M vicmd '/' history-incremental-pattern-search-forward
-#bindkey '^F' history-incremental-pattern-search-backward
+#bindkey -M vicmd '?' history-incremental-pattern-search-backward
+bindkey -M viins '^R' history-incremental-pattern-search-backward
+#bindkey -M vicmd '/' history-incremental-pattern-search-forward
+bindkey -M viins '^F' history-incremental-pattern-search-forward
 
 # prompt
 parse_git_branch() {
