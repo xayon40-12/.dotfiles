@@ -1,9 +1,6 @@
+xrdb -merge $HOME/.Xresources
 if [ -f $HOME/.Xresources_local ]; then
-    cat $HOME/.Xresources > $HOME/.Xresources_loaded
-    cat $HOME/.Xresources_local >> $HOME/.Xresources_loaded
-    xrdb < $HOME/.Xresources_loaded;
-else
-    xrdb < $HOME/.Xresources
+    xrdb -merge $HOME/.Xresources_local
 fi
 feh --bg-fill $HOME/.bgw.jpg
 
