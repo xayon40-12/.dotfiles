@@ -38,6 +38,9 @@ bindsym $mod+f exec firefox
 # start discord
 bindsym $mod+g exec discord
 
+# start minecraft
+bindsym $mod+m exec minecraft-launcher
+
 # switch keyboard
 bindsym $mod+c exec "~/.keychange"
 

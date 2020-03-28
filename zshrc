@@ -31,7 +31,7 @@ zle -N zle-keymap-select
 function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/[NORMAL]}/(main|viins)/[INSERT]}"
 }
-export PS1='%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f %(?..%F{red})%#%f '
+export PS1=$'%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f %(?..%F{red}\a)%#%f '
 export RPS1='%F{magenta}$(vi_mode_prompt_info)%f'
 
 # ************************ USR CONFIG ************************
@@ -79,6 +79,13 @@ stty -ixon
 
 # rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# mount
+alias smount='sudo mount -o gid=users,fmask=113,dmask=002'
+alias sumount='sudo umount'
+
+# ssh
+alias tssh='TERM=xterm ssh'
 
 # launch neofetch when terminal start
 #neofetch
