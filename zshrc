@@ -114,7 +114,7 @@ alias smount='sudo mount -o gid=users,fmask=113,dmask=002'
 alias sumount='sudo umount'
 
 # ssh
-alias tssh='TERM=xterm ssh'
+alias ssht='TERM=xterm-256color ssh'
 
 # launch neofetch when terminal start
 #neofetch
