@@ -77,6 +77,7 @@ export EDITOR='vim'
 # config files
 alias vimrc='vim ~/.vim/vimrc'
 alias zshrc='vim ~/.zshrc'
+alias zshlocal='vim ~/.zsh_local'
 
 # color alias
 alias ls="ls --color=auto"
@@ -97,6 +98,7 @@ alias cb="cargo build"
 alias cr="cargo run"
 alias cbr="cargo build --release"
 alias ct="RUSTFLAGS=\"$RUSTFLAGS -A dead_code\" cargo test -- --nocapture"
+alias cs="cargo script"
 
 # utilities
 export PATH=~/u:$PATH
