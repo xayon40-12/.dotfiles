@@ -118,5 +118,9 @@ alias sumount='sudo umount'
 # ssh
 alias ssht='TERM=xterm-256color ssh'
 
+#sympy
+alias sym='ipython -i ~/.sympy_setup_mat.py'
+alias symphy='ipython -i ~/.sympy_setup_phy.py'
+
 # launch neofetch when terminal start
 #neofetch
