@@ -134,3 +134,6 @@ cd "$(cat ~/.current_term_dir)"
 for d in d p x y z dl; do
     alias $d="cd ~/$d"
 done
+
+#ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
