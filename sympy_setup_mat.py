@@ -2,6 +2,7 @@ from sympy import *
 import re
 init_printing()
 
+ii=I
 D = diff
 I = integrate
 

@@ -124,3 +124,13 @@ alias symphy='ipython -i ~/.sympy_setup_phy.py'
 
 # launch neofetch when terminal start
 #neofetch
+
+#start terminal in preceding directory
+function cd() {
+    builtin cd $1
+    pwd > ~/.current_term_dir
+}
+cd "$(cat ~/.current_term_dir)"
+for d in d p x y z dl; do
+    alias $d="cd ~/$d"
+done
