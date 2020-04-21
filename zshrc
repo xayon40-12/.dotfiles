@@ -140,10 +140,12 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 #notes
 function n() { 
+    typeset -u file
     if [[ -z $1 ]]; then
         file=todo
     else 
         file=$1
     fi
-    exec vim "$HOME/n/${file}.md" 
+    [[ $(vim --serverlist) =~ "$file" ]] && vim --servername "$file" --remote-expr 'execute("wq")'
+    exec vim --servername "$file" "$HOME/n/$file.md" 
 }
