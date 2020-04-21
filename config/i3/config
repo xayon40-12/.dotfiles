@@ -214,11 +214,12 @@ bar {
     font pango:monospace 8
     colors {
         background $nord0
+        separator  $nord3
         statusline $nord8
 
-        focused_workspace  $nord3  $nord8
-        active_workspace   $nord3  $nord8
-        inactive_workspace $nord8  $nord3
-        urgent_workspace   $nord3  $nord15
+        focused_workspace  $nord8  $nord8 $nord3
+        active_workspace   $nord14  $nord14 $nord3
+        inactive_workspace $nord3  $nord3 $nord8
+        urgent_workspace   $nord11  $nord11 $nord3
     }
 }

@@ -137,3 +137,13 @@ done
 
 #ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+#notes
+function n() { 
+    if [[ -z $1 ]]; then
+        file=todo
+    else 
+        file=$1
+    fi
+    exec vim "$HOME/n/${file}.md" 
+}
