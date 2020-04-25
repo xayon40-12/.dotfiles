@@ -131,7 +131,7 @@ function cd() {
     pwd > ~/.current_term_dir
 }
 cd "$(cat ~/.current_term_dir)"
-for d in d p x y z dl; do
+for d in d p x y z w dl; do
     alias $d="cd ~/$d"
 done
 
