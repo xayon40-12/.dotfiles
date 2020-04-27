@@ -45,8 +45,8 @@ bindsym $mod+m exec minecraft-launcher
 bindsym $mod+c exec "~/.keychange"
 
 # ajust volume
-bindsym XF86AudioRaiseVolume exec amixer set Master 3+
-bindsym XF86AudioLowerVolume exec amixer set Master 3-
+bindsym XF86AudioRaiseVolume exec amixer set Master 3%+
+bindsym XF86AudioLowerVolume exec amixer set Master 3%-
 
 # ajust luminosity (uses light-git aur package)
 bindsym XF86MonBrightnessUp exec light -A 10
