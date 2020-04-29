@@ -138,6 +138,9 @@ done
 #ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+#bashtop
+alias top='$(command -v bashtop || command -v htop || command -v top)'
+
 #notes
 function n() { 
     typeset -u file
