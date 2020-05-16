@@ -60,7 +60,7 @@ zle -N zle-keymap-select
 function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/[NORMAL]}/(main|viins)/[INSERT]}"
 }
-export PS1=$'%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f %(?..%F{red}\a)%#%f '
+export PS1=$'%F{cyan}%n%f@%F{green}%M%f:%F{yellow}%~%F{blue}$(parse_git_branch)%f\n %(?..%F{red}\a)%#%f '
 export RPS1='%F{magenta}$(vi_mode_prompt_info)%f'
 
 # ************************ USR CONFIG ************************
@@ -152,3 +152,4 @@ function n() {
     [[ $(vim --serverlist) =~ "$file" ]] && vim --servername "$file" --remote-expr 'execute("wq")'
     exec vim --servername "$file" "$HOME/n/$file.md" 
 }
+alias nl="ls $HOME/n/"
