@@ -77,6 +77,7 @@ export EDITOR='vim'
 # config files
 alias vimrc='vim ~/.vim/vimrc'
 alias zshrc='vim ~/.zshrc'
+alias kakrc='kak ~/.config/kak/kakrc'
 alias zshlocal='vim ~/.zsh_local'
 
 # color alias
@@ -153,3 +154,17 @@ function n() {
     exec vim --servername "$file" "$HOME/n/$file.md" 
 }
 alias nl="ls $HOME/n/"
+
+#regex search
+regex () {
+	awk 'match($0,/'$1'/, ary) {print ary['${2:-'0'}']}'
+}
+
+#haskell
+alias agda='stack exec agda --'
+alias ghc='stack ghc'
+alias rghc='stack runghc'
+alias ghciconf='vim ~/.ghc/ghci.conf'
+
+#headset
+alias bc='bluetoothctl connect 4C:87:5D:A2:57:A9'
