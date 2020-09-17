@@ -1,0 +1,25 @@
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "Delapouite/kakoune-espeak"
+plug "https://gitlab.com/Screwtapello/kakoune-state-save"
+plug "andreyorst/smarttab.kak"
+plug "lePerdu/kakboard" %{
+        hook global WinCreate .* %{ kakboard-enable }
+}
+
+hook global RawKey <mouse:press:middle:.*> 'exec !xclip<space>-o<ret>'
+
+add-highlighter global/ number-lines -hlcursor -separator ' '
+add-highlighter global/ wrap -indent
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+
+hook global WinSetOption filetype=(haskell|rust|python|go|javascript|typescript|c|cpp|latex|lisp) %{
+    lsp-enable-window
+    set global lsp_hover_anchor true
+    #lsp-auto-hover-enable
+
+    expandtab
+}
+
+map global user l ':enter-user-mode<space>lsp<ret>' -docstring 'enter lsp mode'
+map global user h ',lh' -docstring 'lsp hover'
