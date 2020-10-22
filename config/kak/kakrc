@@ -5,21 +5,38 @@ plug "andreyorst/smarttab.kak"
 plug "lePerdu/kakboard" %{
         hook global WinCreate .* %{ kakboard-enable }
 }
+plug "occivink/kakoune-snippets" config %{
+    set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
+}
+plug "andreyorst/kakoune-snippet-collection"
 
 hook global RawKey <mouse:press:middle:.*> 'exec !xclip<space>-o<ret>'
 
 add-highlighter global/ number-lines -hlcursor -separator ' '
 add-highlighter global/ wrap -indent
 
-eval %sh{kak-lsp --kakoune -s $kak_session}
+map global user l ':enter-user-mode<space>lsp<ret>' -docstring 'enter lsp mode'
+map global user h ',lh' -docstring 'lsp hover'
 
 hook global WinSetOption filetype=(haskell|rust|python|go|javascript|typescript|c|cpp|latex|lisp) %{
+    eval %sh{kak-lsp --kakoune -s $kak_session}
     lsp-enable-window
     set global lsp_hover_anchor true
-    #lsp-auto-hover-enable
-
     expandtab
 }
 
-map global user l ':enter-user-mode<space>lsp<ret>' -docstring 'enter lsp mode'
-map global user h ',lh' -docstring 'lsp hover'
+hook global WinSetOption filetype=latex %{
+    hook window BufWritePost .*\.tex %{ nop %sh{
+        cd "$(dirname $kak_buffile)";
+        name=$(basename $kak_buffile);
+        pdflatex "$name";
+        pdf=$(echo $name | sed 's/\.[^\.]\+/.pdf/');
+        val=$(ps aux | grep -E -o "[0-9] mupdf $pdf")
+        if test -z "$val";
+        then
+        	mupdf "$pdf" </dev/null &>/dev/null & disown;
+        else
+                pkill -HUP mupdf;	
+        fi;
+    } }
+}
