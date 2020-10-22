@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 if [[ "$(tty)" == /dev/tty1 ]]; then
     exec startx
     exit 0
@@ -72,13 +74,13 @@ alias pf="sudo poweroff"
 # editors
 alias se='sudoedit'
 alias v='vim'
-export EDITOR='vim'
+export EDITOR='kak'
 
 # config files
-alias vimrc='vim ~/.vim/vimrc'
-alias zshrc='vim ~/.zshrc'
-alias kakrc='kak ~/.config/kak/kakrc'
-alias zshlocal='vim ~/.zsh_local'
+alias vimrc='$EDITOR ~/.vim/vimrc'
+alias zshrc='$EDITOR ~/.zshrc'
+alias kakrc='$EDITOR ~/.config/kak/kakrc'
+alias zshlocal='$EDITOR ~/.zsh_local'
 
 # color alias
 alias ls="ls --color=auto"
@@ -103,6 +105,7 @@ alias cs="cargo script"
 
 # utilities
 export PATH=~/u:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 alias dev='cd $(cat ~/.current_dev)'
 alias sdev='pwd > ~/.current_dev'
 
@@ -162,13 +165,17 @@ regex () {
 
 #haskell
 alias agda='stack exec agda --'
-alias sghc='stack ghc'
-alias srghc='stack runghc'
-alias ghciconf='vim ~/.ghc/ghci.conf'
-alias sghci='stack ghci'
+alias ghc='stack ghc'
+alias rghc='stack runghc'
+alias ghciconf='kak ~/.ghc/ghci.conf'
+alias ghci='stack ghci'
+alias hswatch="find . -name '*.hs' | entr stack run"
+alias hswatchtest="find . -name '*.hs' | entr stack test"
 
 #headset
 alias bc='bluetoothctl connect 4C:87:5D:A2:57:A9'
 
 #update pacman mirror list
 alias pacmirror='sudo reflector --verbose --country 'France' -l 5 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+
+if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
