@@ -17,6 +17,7 @@ add-highlighter global/ wrap -indent
 
 map global user l ':enter-user-mode<space>lsp<ret>' -docstring 'enter lsp mode'
 map global user h ',lh' -docstring 'lsp hover'
+map global user f ',lf' -docstring 'lsp format'
 
 hook global WinSetOption filetype=(haskell|rust|python|go|javascript|typescript|c|cpp|latex|lisp) %{
     eval %sh{kak-lsp --kakoune -s $kak_session}
@@ -29,8 +30,10 @@ hook global WinSetOption filetype=latex %{
     hook window BufWritePost .*\.tex %{ nop %sh{
         cd "$(dirname $kak_buffile)";
         name=$(basename $kak_buffile);
-        pdflatex "$name";
+        mkdir -p tmp;
+        pdflatex -output-directory=tmp "$name";
         pdf=$(echo $name | sed 's/\.[^\.]\+/.pdf/');
+        mv tmp/"$pdf" .;
         val=$(ps aux | grep -E -o "[0-9] mupdf $pdf")
         if test -z "$val";
         then
