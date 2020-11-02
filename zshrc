@@ -179,3 +179,6 @@ alias bc='bluetoothctl connect 4C:87:5D:A2:57:A9'
 alias pacmirror='sudo reflector --verbose --country 'France' -l 5 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+#latex
+alias mkak='kak **/main.tex'
