@@ -32,11 +32,14 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# start firefox
-bindsym $mod+f exec firefox
+# start chromium
+bindsym $mod+f exec chromium
 
 # start discord
 bindsym $mod+g exec discord
+
+# start thunderbird
+bindsym $mod+Shift+g exec thunderbird
 
 # start minecraft
 bindsym $mod+m exec minecraft-launcher
@@ -223,3 +226,6 @@ bar {
         urgent_workspace   $nord11  $nord11 $nord3
     }
 }
+
+# compositor
+#exec --no-startup-id picon --config ~/.config/compton.conf -b
