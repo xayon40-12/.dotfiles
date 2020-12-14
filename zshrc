@@ -168,9 +168,9 @@ alias agda='stack exec agda --'
 alias ghc='stack ghc'
 alias rghc='stack runghc'
 alias ghciconf='kak ~/.ghc/ghci.conf'
-alias ghci='stack ghci'
-alias hswatch="find . -name '*.hs' | entr stack run"
-alias hswatchtest="find . -name '*.hs' | entr stack test"
+alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
+alias hswatch="find . -name '*.hs' | entr -rc stack run"
+alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 
 #headset
 alias bc='bluetoothctl connect 4C:87:5D:A2:57:A9'
@@ -182,3 +182,23 @@ if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix
 
 #latex
 alias mkak='kak **/main.tex'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#WARING must stay at the end
+#starship prompt
+eval "$(starship init zsh)"
