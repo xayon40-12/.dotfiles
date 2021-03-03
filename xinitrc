@@ -4,4 +4,7 @@ if [ -f $HOME/.Xresources_local ]; then
 fi
 feh --bg-fill $HOME/.bgw.jpg
 
-WINIT_HIDPI_FACTOR=2 TERMINAL=alacritty exec i3
+export TERMINAL=kitty
+#WINIT_HIDPI_FACTOR=2 TERMINAL=alacritty
+exec i3
+#exec emacs
