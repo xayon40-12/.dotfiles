@@ -5,10 +5,10 @@ plug "andreyorst/smarttab.kak"
 plug "lePerdu/kakboard" %{
         hook global WinCreate .* %{ kakboard-enable }
 }
-plug "occivink/kakoune-snippets" config %{
-    set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
-}
-plug "andreyorst/kakoune-snippet-collection"
+#plug "occivink/kakoune-snippets" noload config %{
+    #set-option -add global snippets_directories "%opt{plug_install_dir}/kakoune-snippet-collection/snippets"
+#}
+#plug "andreyorst/kakoune-snippet-collection"
 
 hook global RawKey <mouse:press:middle:.*> 'exec !xclip<space>-o<ret>'
 
@@ -18,7 +18,9 @@ add-highlighter global/ wrap -indent
 map global user l ':enter-user-mode<space>lsp<ret>' -docstring 'enter lsp mode'
 map global user h ',lh' -docstring 'lsp hover'
 map global user f ',lf' -docstring 'lsp format'
+map global user u '<a-i>uc' -docstring 'change iner arg'
 
+hook global BufCreate .+\.lalrpop %{ set buffer filetype rust }
 hook global WinSetOption filetype=(haskell|rust|python|go|javascript|typescript|c|cpp|latex|lisp) %{
     eval %sh{kak-lsp --kakoune -s $kak_session}
     lsp-enable-window
@@ -27,6 +29,9 @@ hook global WinSetOption filetype=(haskell|rust|python|go|javascript|typescript|
 }
 
 hook global WinSetOption filetype=latex %{
+
+    #plug "occivink/kakoune-snippets"
+
     hook window BufWritePost .*\.tex %{ nop %sh{
         cd "$(dirname $kak_buffile)";
         name=$(basename $kak_buffile);
