@@ -35,6 +35,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start chromium
 bindsym $mod+f exec chromium
 
+# start emacs
+bindsym $mod+w exec emacsclient -c
+
 # start discord
 bindsym $mod+g exec discord
 
@@ -228,4 +231,4 @@ bar {
 }
 
 # compositor
-#exec --no-startup-id picon --config ~/.config/compton.conf -b
+exec --no-startup-id picon --config ~/.config/compton.conf -b
