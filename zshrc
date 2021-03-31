@@ -73,10 +73,8 @@ alias pf="sudo poweroff"
 
 # editors
 alias se='sudoedit'
-export EMACS='emacsclient -t'
-alias emacs=$EMACS
 alias v='vim'
-export EDITOR=$EMACS
+export EDITOR='emacsclient -t'
 alias e=$EDITOR
 
 # config files
@@ -190,7 +188,8 @@ alias mkak='kak **/main.tex'
 #terminal program alias
 alias ls='$(if [[ -n $(which exa) ]]; then echo "exa -la"; else echo "ls"; fi)'
 
-
+#dotfiles
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 
 
