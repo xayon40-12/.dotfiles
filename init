@@ -14,3 +14,5 @@ for i in $list; do
         ln -s "$dir/$i" ".$i"
     fi
 done
+#git clone git@github.com:xayon40-12/.vim && ~/.vim/init
+git clone git@github.com:xayon40-12/.doom.d && ~/.doom.d/install
