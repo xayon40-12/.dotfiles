@@ -37,6 +37,7 @@ bindsym $mod+f exec chromium
 
 # start emacs
 bindsym $mod+w exec emacsclient -c
+bindsym $mod+Shift+w exec emacsclient -c --eval '(find-file "~/org/notes.org")'
 
 # start discord
 bindsym $mod+g exec discord
