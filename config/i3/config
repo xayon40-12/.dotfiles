@@ -33,7 +33,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # start chromium
-bindsym $mod+f exec chromium
+bindsym $mod+f exec google-chrome-stable
 
 # start emacs
 bindsym $mod+w exec emacsclient -c -a ""
