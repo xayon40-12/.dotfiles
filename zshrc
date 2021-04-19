@@ -76,6 +76,7 @@ alias se='sudoedit'
 alias v='vim'
 export EDITOR='emacsclient -t -a ""'
 alias e=$EDITOR
+ew() {emacsclient -c -a "" $* & disown}
 
 # config files
 alias vimrc="$EDITOR ~/.vim/vimrc"
