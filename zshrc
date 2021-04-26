@@ -192,7 +192,10 @@ alias ls='$(if [[ -n $(which exa) ]]; then echo "exa -la"; else echo "ls"; fi)'
 #dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-
+# add doom emacs to path
+if [ -d "$HOME/.emacs.d/bin" ]; then
+    export PATH="$PATH:$HOME/.emacs.d/bin"
+fi
 
 
 
