@@ -4,15 +4,13 @@ list=$(find `ls | sed -e 's/^init$//'` -type f)
 dir="$(pwd)"
 cd
 for i in $list; do
-    if [[ ! -L ".$i" ]]; then
-        if [[ -f ".$i" ]]; then
-            mv ".$i" ".$i.OLD"
-        fi
-        if [[ $i =~ / ]]; then
-            mkdir -p ".${i%/*}"
-        fi
-        ln -s "$dir/$i" ".$i"
+    if [[ -f ".$i" ]]; then
+        mv ".$i" ".$i.OLD"
     fi
+    if [[ $i =~ / ]]; then
+        mkdir -p ".${i%/*}"
+    fi
+    ln "$dir/$i" ".$i"
 done
 #git clone git@github.com:xayon40-12/.vim && ~/.vim/init
 git clone git@github.com:xayon40-12/.doom.d && ~/.doom.d/install
