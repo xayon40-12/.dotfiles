@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [[ "$(tty)" == /dev/tty1 ]]; then
+if [[ "$(tty)" =~ "^/dev/tty(1|2)$" ]]; then
     exec startx
     exit 0
 fi
