@@ -34,6 +34,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # start chromium
 bindsym $mod+f exec google-chrome-stable
+bindsym $mod+Shift+f exec firefox
 
 # start emacs
 bindsym $mod+w exec emacsclient -c -a ""
