@@ -187,7 +187,7 @@ if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix
 alias mkak='kak **/main.tex'
 
 #terminal program alias
-alias ls='$(if [[ "$(which exa)" =~ "exa not found" ]]; then echo "ls"; else echo "exa -la"; fi)'
+alias ls='$(if [[ "$(which exa)" =~ "exa not found" ]]; then echo "ls"; else echo "exa -lga"; fi)'
 
 #dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
