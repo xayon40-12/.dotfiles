@@ -74,7 +74,7 @@ alias pf="sudo poweroff"
 # editors
 alias se='sudoedit'
 alias v='vim'
-export EDITOR='emacsclient -t -a ""'
+export EDITOR=vim #'emacsclient -t -a ""'
 alias e=$EDITOR
 ew() {emacsclient -c -a "" $* & disown}
 
