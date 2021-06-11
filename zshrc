@@ -171,7 +171,7 @@ alias ghc='stack ghc'
 alias rghc='stack runghc'
 alias ghciconf='kak ~/.ghc/ghci.conf'
 alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
-alias hswatch="find . -name '*.hs' | entr -rc stack run"
+alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
 
