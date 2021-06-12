@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+cd "$(dirname "$(readlink -f "$0")")" || (echo "cd into dotfile directory failed"; exit)
+git pull
+list=$(find `ls | sed -e 's/^init$//'` -type f)
+dir="$(pwd)"
+cd || echo "filed to cd into home directory"
+for i in $list; do
+    if [[ -f ".$i" ]]; then
+        mv ".$i" ".$i.OLD"
+    fi
+    if [[ $i =~ / ]]; then
+        mkdir -p ".${i%/*}"
+    fi
+    ln "$dir/$i" ".$i"
+done
+git clone git@github.com:xayon40-12/.vim
+cd ~/.vim && git pull && ./init
+git clone git@github.com:xayon40-12/.doom.d
+cd ~/.doom.d && git pull && ~/.doom.d/install
