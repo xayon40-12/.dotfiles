@@ -234,3 +234,5 @@ bar {
 
 # compositor
 # exec --no-startup-id compton
+exec setxkbmap -option compose:rctrl
+exec setxkbmap -option caps:escape
