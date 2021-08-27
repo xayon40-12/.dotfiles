@@ -74,7 +74,8 @@ alias pf="sudo poweroff"
 # editors
 alias se='sudoedit'
 alias v='vim'
-export EDITOR=vim #'emacsclient -t -a ""'
+alias nv='nvim'
+export EDITOR=$(if command -v nvim &> /dev/null; then echo nvim; else echo vim; fi) #'emacsclient -t -a ""'
 alias e=$EDITOR
 ew() {emacsclient -c -a "" $* & disown}
 
@@ -166,10 +167,11 @@ regex () {
 }
 
 #haskell
+export PATH=$HOME/.ghcup/bin:$PATH
 alias agda='stack exec agda --'
 alias ghc='stack ghc'
 alias rghc='stack runghc'
-alias ghciconf='kak ~/.ghc/ghci.conf'
+alias ghciconf="$EDITOR ~/.ghc/ghci.conf"
 alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
@@ -187,7 +189,7 @@ if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix
 alias mkak='kak **/main.tex'
 
 #terminal program alias
-alias ls='$(if [[ "$(which exa)" =~ "exa not found" ]]; then echo "ls"; else echo "exa -lga"; fi)'
+alias ls='$(if command -v exa &> /dev/null; then echo "exa -lga"; else echo "ls"; fi)'
 
 #dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
