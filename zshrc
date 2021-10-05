@@ -199,6 +199,8 @@ if [ -d "$HOME/.emacs.d/bin" ]; then
     export PATH="$PATH:$HOME/.emacs.d/bin"
 fi
 
+#set numeric to english
+export LC_NUMERIC=en_US.UTF-8
 
 
 
