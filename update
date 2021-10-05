@@ -17,3 +17,7 @@ done
 #cd ~/.vim && git pull && ./init
 #git clone git@github.com:xayon40-12/.doom.d
 #cd ~/.doom.d && git pull && ~/.doom.d/install
+cd ~/.config || (echo "cd into ~/.config failed"; exit)
+git clone git@github.com:xayon40-12/nvim
+cd ~/.config/nvim || (echo "cd into ~/.config/nvim failed"; exit)
+./install
