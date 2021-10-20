@@ -1,31 +1,30 @@
-#!/usr/bin/env bash
-cd "$(dirname "$(stat -f "$0")")" || (echo "cd into dotfile directory failed"; exit)
+#!/usr/bin/env zsh
+cd "${0:a:h}" || (echo "cd into dotfile directory failed"; exit)
 git pull
-list=$(find `/bin/ls | sed -e 's/^update$//'` -type f)
-dir="$(pwd)"
-cd || (echo "failed to cd into home directory"; exit)
-for i in $list; do
-    if [[ -f ".$i.OLD" ]]; then
-        rm ".$i.OLD"
+for i in **/*; do
+  if [[ -f "$i" && ! "$i" =~ "^update$" ]]; then
+    if [[ -f "$HOME/.$i.OLD" ]]; then
+        rm "$HOME/.$i.OLD"
     fi
-    if [[ -f ".$i" ]]; then
-        mv ".$i" ".$i.OLD"
+    if [[ -f "$HOME/.$i" ]]; then
+        mv "$HOME/.$i" "$HOME/.$i.OLD"
     fi
     if [[ $i =~ / ]]; then
-        mkdir -p ".${i%/*}"
+        mkdir -p "$HOME/.${i%/*}"
     fi
-    ln "$dir/$i" ".$i"
+    ln "$i" "$HOME/.$i"
+  fi
 done
 #git clone git@github.com:xayon40-12/.vim
-#cd ~/.vim && git pull && ./init
+#cd $HOME/.vim && git pull && ./init
 #git clone git@github.com:xayon40-12/.doom.d
-#cd ~/.doom.d && git pull && ~/.doom.d/install
-cd ~/.config || (echo "cd into ~/.config failed"; exit)
+#cd $HOME/.doom.d && git pull && $HOME/.doom.d/install
+cd $HOME/.config || (echo "cd into $HOME/.config failed"; exit)
 if [[ ! -d nvim/ ]]; then
   git clone git@github.com:xayon40-12/nvim
-  cd ~/.config/nvim || (echo "cd into ~/.config/nvim failed"; exit)
+  cd $HOME/.config/nvim || (echo "cd into $HOME/.config/nvim failed"; exit)
   ./install
 else
-  cd ~/.config/nvim || (echo "cd into ~/.config/nvim failed"; exit)
+  cd $HOME/.config/nvim || (echo "cd into $HOME/.config/nvim failed"; exit)
   git pull
 fi
