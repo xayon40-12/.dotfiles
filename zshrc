@@ -27,7 +27,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+#eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -81,6 +81,7 @@ ew() {emacsclient -c -a "" $* & disown}
 
 # config files
 alias vimrc="$EDITOR ~/.vim/vimrc"
+alias nvimrc="$EDITOR ~/.config/nvim/init.vim"
 alias zshrc="$EDITOR ~/.zshrc"
 alias kakrc="$EDITOR ~/.config/kak/kakrc"
 alias zshlocal="$EDITOR ~/.zsh_local"
