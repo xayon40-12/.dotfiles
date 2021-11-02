@@ -178,9 +178,6 @@ alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
 
-#headset
-alias bc='bluetoothctl connect 4C:87:5D:A2:57:A9'
-
 #update pacman mirror list
 alias pacmirror='sudo reflector --verbose --country 'France' -l 5 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
