@@ -32,6 +32,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# lock screen
+bindsym $mod+l exec i3lock
+
 # start chromium
 bindsym $mod+f exec google-chrome-stable
 bindsym $mod+Shift+f exec firefox
