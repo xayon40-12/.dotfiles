@@ -91,13 +91,17 @@ alias ls="ls --color=auto"
 alias grep='grep --color=auto'
 
 
-#terminal clipboard (need to install xclip)
-alias pbcopy="xclip -selection c"
-alias pbpaste="xclip -selection clipboard -o"
+if [[ `uname` == "Darwin" ]]; then
+  alias o='open >/dev/null 2>&1'
+else
+  #terminal clipboard (need to install xclip)
+  alias pbcopy="xclip -selection c"
+  alias pbpaste="xclip -selection clipboard -o"
 
-#open files with type detection
-alias open="xdg-open"
-alias o='xdg-open >/dev/null 2>&1'
+  #open files with type detection
+  alias open="xdg-open"
+  alias o='xdg-open >/dev/null 2>&1'
+fi
 
 # rust
 docrs() { firefox "https://docs.rs/$1" }
@@ -169,11 +173,11 @@ regex () {
 
 #haskell
 export PATH=$HOME/.ghcup/bin:$PATH
-alias agda='stack exec agda --'
-alias ghc='stack ghc'
-alias rghc='stack runghc'
+#alias agda='stack exec agda --'
+#alias ghc='stack ghc'
+#alias rghc='stack runghc'
 alias ghciconf="$EDITOR ~/.ghc/ghci.conf"
-alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
+#alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
