@@ -154,17 +154,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 alias top='$(command -v bashtop || command -v htop || command -v top)'
 
 #notes
-function n() { 
-    typeset -u file
-    if [[ -z $1 ]]; then
-        file=todo
-    else 
-        file=$1
-    fi
-    [[ $(vim --serverlist) =~ "$file" ]] && vim --servername "$file" --remote-expr 'execute("wq")'
-    exec vim --servername "$file" "$HOME/n/$file.md" 
-}
-alias nl="ls $HOME/n/"
+alias n='e $HOME/notes/notes.norg'
+alias td='e $HOME/notes/todo.norg'
 
 #regex search
 regex () {
