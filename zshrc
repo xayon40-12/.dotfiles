@@ -90,9 +90,12 @@ alias ls="ls --color=auto"
 alias grep='grep --color=auto'
 
 
-#terminal clipboard (need to install xclip)
-alias pbcopy="xclip -selection c"
-alias pbpaste="xclip -selection clipboard -o"
+if [[ `uname` == "Darwin" ]]; then
+  alias o='open >/dev/null 2>&1'
+else
+  #terminal clipboard (need to install xclip)
+  alias pbcopy="xclip -selection c"
+  alias pbpaste="xclip -selection clipboard -o"
 
 #open files with type detection
 alias open="handlr open" #"xdg-open"
@@ -159,11 +162,8 @@ regex () {
 
 #haskell
 export PATH=$HOME/.ghcup/bin:$PATH
-alias agda='stack exec agda --'
-alias sghc='stack ghc'
-alias srghc='stack runghc'
-alias sghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias ghciconf="$EDITOR ~/.ghc/ghci.conf"
+#alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
