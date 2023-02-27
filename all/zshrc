@@ -96,6 +96,7 @@ else
   #terminal clipboard (need to install xclip)
   alias pbcopy="xclip -selection c"
   alias pbpaste="xclip -selection clipboard -o"
+fi
 
 #open files with type detection
 alias open="handlr open" #"xdg-open"
