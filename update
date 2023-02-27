@@ -1,30 +1,33 @@
 #!/usr/bin/env zsh
 cd "${0:a:h}" || (echo "cd into dotfile directory failed"; exit)
 git pull
-for i in **/*; do
-  if [[ -f "$i" && ! "$i" =~ "^update$" ]]; then
-    if [[ -f "$HOME/.$i.OLD" ]]; then
-        rm "$HOME/.$i.OLD"
+
+update() {
+  if [[ -f "$1" ]]; then
+    echo update: $1
+    if [[ -f "$HOME/.$1.OLD" ]]; then
+        rm "$HOME/.$1.OLD"
     fi
-    if [[ -f "$HOME/.$i" ]]; then
-        mv "$HOME/.$i" "$HOME/.$i.OLD"
+    if [[ -f "$HOME/.$1" ]]; then
+        mv "$HOME/.$1" "$HOME/.$1.OLD"
     fi
-    if [[ $i =~ / ]]; then
-        mkdir -p "$HOME/.${i%/*}"
+    if [[ $1 =~ / ]]; then
+        mkdir -p "$HOME/.${1%/*}"
     fi
-    ln "$i" "$HOME/.$i"
+    ln "$1" "$HOME/.$1"
   fi
-done
-#git clone git@github.com:xayon40-12/.vim
-#cd $HOME/.vim && git pull && ./init
-#git clone git@github.com:xayon40-12/.doom.d
-#cd $HOME/.doom.d && git pull && $HOME/.doom.d/install
-cd $HOME/.config || (echo "cd into $HOME/.config failed"; exit)
-if [[ ! -d nvim/ ]]; then
-  git clone git@github.com:xayon40-12/nvim
-  cd $HOME/.config/nvim || (echo "cd into $HOME/.config/nvim failed"; exit)
-  ./install
-else
-  cd $HOME/.config/nvim || (echo "cd into $HOME/.config/nvim failed"; exit)
-  git pull
+}
+
+pushd all
+  for i in **/*; do
+    update $i
+  done
+popd
+
+if [[ $1 == "arch" ]]; then
+  pushd arch
+    for i in **/*; do
+      update $i
+    done
+  popd
 fi
