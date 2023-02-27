@@ -73,9 +73,8 @@ alias pf="sudo poweroff"
 
 # editors
 alias se='sudoedit'
-alias v='vim'
 alias nv='nvim'
-export EDITOR=$(if command -v nvim &> /dev/null; then echo nvim; else echo vim; fi) #'emacsclient -t -a ""'
+export EDITOR=hx #$(if command -v nvim &> /dev/null; then echo nvim; else echo vim; fi) #'emacsclient -t -a ""'
 alias e=$EDITOR
 ew() {emacsclient -c -a "" $* & disown}
 
@@ -96,8 +95,8 @@ alias pbcopy="xclip -selection c"
 alias pbpaste="xclip -selection clipboard -o"
 
 #open files with type detection
-alias open="xdg-open"
-alias o='xdg-open >/dev/null 2>&1'
+alias open="handlr open" #"xdg-open"
+alias o='open >/dev/null 2>&1'
 
 # rust
 docrs() { firefox "https://docs.rs/$1" }
@@ -150,8 +149,8 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 alias top='$(command -v bashtop || command -v htop || command -v top)'
 
 #notes
-alias n='e $HOME/notes/notes.norg'
-alias td='e $HOME/notes/todo.norg'
+alias n='e $HOME/notes/notes.md'
+alias td='e $HOME/notes/todo.md'
 
 #regex search
 regex () {
@@ -161,16 +160,17 @@ regex () {
 #haskell
 export PATH=$HOME/.ghcup/bin:$PATH
 alias agda='stack exec agda --'
-alias ghc='stack ghc'
-alias rghc='stack runghc'
+alias sghc='stack ghc'
+alias srghc='stack runghc'
+alias sghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias ghciconf="$EDITOR ~/.ghc/ghci.conf"
-alias ghci='stack ghci +RTS -M8192M -c30 -RTS'
 alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
 
 #update pacman mirror list
-alias pacmirror='sudo reflector --verbose --country 'France' -l 5 -p http --sort rate --save /etc/pacman.d/mirrorlist'
+export country=japan
+alias pacmirror='sudo reflector --verbose --country '$country' -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 

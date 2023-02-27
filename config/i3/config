@@ -237,4 +237,3 @@ bar {
 
 # compositor
 # exec --no-startup-id compton
-exec setxkbmap dvorak -option compose:rctrl,caps:escape
