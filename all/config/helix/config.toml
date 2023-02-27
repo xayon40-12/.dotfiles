@@ -1,0 +1,17 @@
+theme = "monokai_pro"
+
+[editor]
+auto-pairs = false
+cursorline = true
+cursorcolumn = true
+auto-save = true
+idle-timeout = 100
+bufferline = "multiple"
+
+[editor.search]
+smart-case = false
+
+[editor.indent-guides]
+render = true
+character = "⸽" # "▏", "┊", "⸽"
+skip-levels = 0
