@@ -1,6 +1,7 @@
 theme = "monokai_pro"
 
 [editor]
+soft-wrap.enable = true
 auto-pairs = false
 cursorline = true
 cursorcolumn = true
@@ -13,5 +14,5 @@ smart-case = false
 
 [editor.indent-guides]
 render = true
-character = "⸽" # "▏", "┊", "⸽"
+character = "┊" # "▏", "┊", "⸽"
 skip-levels = 0

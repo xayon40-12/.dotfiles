@@ -192,7 +192,7 @@ fi
 #set numeric to english
 export LC_NUMERIC=en_US.UTF-8
 
-
+alias icat="kitty +kitten icat"
 
 
 
