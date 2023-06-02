@@ -141,10 +141,19 @@ function cd() {
     builtin cd $1
     pwd > ~/.current_term_dir
 }
+eval "$(zoxide init bash)"
+function z() {
+  __zoxide_z $@
+  pwd > ~/.current_term_dir
+}
+function zi() {
+  __zoxide_zi $@
+  pwd > ~/.current_term_dir
+}
 cd "$(cat ~/.current_term_dir)"
-for d in d p x y z w dl; do
-    alias $d="cd ~/$d"
-done
+# for d in d p x y z w dl; do
+#     alias $d="cd ~/$d"
+# done
 
 #ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
@@ -173,26 +182,13 @@ alias hs="ptghci"
 export country=japan
 alias pacmirror='sudo reflector --verbose --country '$country' -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
-if [ -e /home/xayon/.nix-profile/etc/profile.d/nix.sh ]; then . /home/xayon/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-#latex
-alias mkak='kak **/main.tex'
-
 #terminal program alias
 alias ls='$(if command -v exa &> /dev/null; then echo "exa -lga"; else echo "ls"; fi)'
-
-#dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# add doom emacs to path
-if [ -d "$HOME/.emacs.d/bin" ]; then
-    export PATH="$PATH:$HOME/.emacs.d/bin"
-fi
 
 #set numeric to english
 export LC_NUMERIC=en_US.UTF-8
 
-
+alias size='du -h --max-depth 1 | sort -h'
 
 
 
