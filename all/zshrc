@@ -189,6 +189,7 @@ alias ls='$(if command -v exa &> /dev/null; then echo "exa -lga"; else echo "ls"
 export LC_NUMERIC=en_US.UTF-8
 
 alias size='du -h --max-depth 1 | sort -h'
+alias icat="kitty +kitten icat"
 
 
 
