@@ -1,7 +1,7 @@
 #!/bin/bash
     
 if [[ -n $(setxkbmap -query | grep fr -o) ]]; then 
-    setxkbmap dvorak
+    setxkbmap us dvorak
 else
     setxkbmap fr
 fi
