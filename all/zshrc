@@ -99,7 +99,10 @@ else
 fi
 
 #open files with type detection
-alias open="handlr open" #"xdg-open"
+
+if command -v handlr &> /dev/null; then
+  alias open="handlr open" #"xdg-open"
+fi
 alias o='open >/dev/null 2>&1'
 
 # rust
