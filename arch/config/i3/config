@@ -53,7 +53,7 @@ bindsym $mod+Shift+g exec thunderbird
 bindsym $mod+m exec minecraft-launcher
 
 # switch keyboard
-bindsym $mod+c exec "~/.keychange"
+#bindsym $mod+c exec "~/.keychange"
 
 # ajust volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 3%+
