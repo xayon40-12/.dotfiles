@@ -5,10 +5,6 @@ if [[ "$(tty)" =~ "^/dev/tty(1|2)$" ]]; then
     exit 0
 fi
 
-if [[ -f ~/.zsh_local ]] ; then
-    . ~/.zsh_local
-fi
-
 # ************************ ZSH CONFIG ************************
 
 # history
@@ -121,6 +117,7 @@ stty -ixon
 
 # rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+alias cargogitinstall='cargo install --path $(git rev-parse --show-toplevel)'
 
 # mount
 alias smount='sudo mount -o gid=users,fmask=113,dmask=002'
@@ -137,6 +134,7 @@ alias symphy='ipython -i ~/.sympy_setup_phy.py'
 #neofetch
 
 #start terminal in preceding directory
+alias bcd='builtin cd'
 function cd() {
     builtin cd $1
     pwd > ~/.current_term_dir
@@ -151,6 +149,7 @@ function zi() {
   pwd > ~/.current_term_dir
 }
 cd "$(cat ~/.current_term_dir)"
+
 # for d in d p x y z w dl; do
 #     alias $d="cd ~/$d"
 # done
@@ -177,6 +176,8 @@ alias ghciconf="$EDITOR ~/.ghc/ghci.conf"
 alias hswatch="echo **/*.{hs,cabal,yaml} | sed 's/ /\n/g' | entr -rc stack run"
 alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
+#idris2
+alias idrisi="rlwrap idris2"
 
 #update pacman mirror list
 export country=japan
@@ -197,6 +198,10 @@ alias icat="kitty +kitten icat"
 
 
 
+
+if [[ -f ~/.zsh_local ]] ; then
+    . ~/.zsh_local
+fi
 
 #WARING must stay at the end
 #starship prompt

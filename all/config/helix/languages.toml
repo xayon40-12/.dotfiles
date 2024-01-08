@@ -1,5 +1,15 @@
+[language-server.nu]
+command = "nu"
+args = ["--lsp"]
+
+[[language]]
+name = "nu"
+language-servers = [ "nu" ]
+
+[language-server.mdpls]
+command = "mdpls" 
+config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
+
 [[language]]
 name = "markdown"
-language-server = { command = "mdpls" }
-# config = { markdown.preview.auto = true, markdown.preview.browser = "firefox"}
-config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
+language-servers = [ "mdpls" ]
