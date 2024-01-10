@@ -12,4 +12,4 @@ config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
 
 [[language]]
 name = "markdown"
-language-servers = [ "mdpls" ]
+language-servers = [ "mdpls", "marksman" ]
