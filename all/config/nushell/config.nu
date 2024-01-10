@@ -760,3 +760,31 @@ $env.config = {
         }
     ]
 }
+
+alias pf = sudo poweroff
+alias se = sudoedit
+alias e = run-external $env.EDITOR
+alias zshrc = e ~/.zshrc
+alias zshlocal = e ~/.zsh_local
+alias o = open # >/dev/null 2>&1
+alias cargogitinstall = cargo install --path (git rev-parse --show-toplevel)
+alias smount = sudo mount -o gid=users,fmask=113,dmask=002
+alias sumount = sudo umount
+alias ssht = TERM=xterm-256color ssh
+alias sym = ipython -i ~/.sympy_setup_mat.py
+alias bcd = builtin cd
+alias n = e ~/notes/notes.md
+alias td = e ~/notes/todo.md
+alias ghciconf = e ~/.ghc/ghci.conf
+def hswatch [] { glob **/*.{hs,cabal,yaml} | to text | entr -rc stack run }
+def hswatchtest [] { glob **/*.hs | to text | entr -rc stack test }
+alias hs = ptghci
+alias pacmirror = sudo reflector --verbose --country $env.country -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist
+def size [] { du -a --max-depth 1 | sort-by physical }
+alias icat = kitty +kitten icat
+alias core-cd = cd
+core-cd (open ~/.current_term_dir)
+def --env cd [dir = "~"] {
+  core-cd $dir
+  pwd | save -f ~/.current_term_dir
+}
