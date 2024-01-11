@@ -34,7 +34,7 @@ def create_left_prompt [] {
     
     let git_segment = [$git_branch_segment $git_status_segment] | str join " " | str trim
 
-    $"($path_segment)($git_segment) "
+    [$path_segment $git_segment] | str join " " | str trim | $"($in) "
 }
 
 def create_right_prompt [] {
