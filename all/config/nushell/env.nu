@@ -24,11 +24,15 @@ def create_left_prompt [] {
     let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)"
-
     let path_segment = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
 
-    let git_segment = do { git branch --show-current } | complete | get stdout
-    let git_segment = if ($git_segment | str length) == 0 { "" } else { $" (ansi purple) ($git_segment)" }
+    let git_branch = do { git branch --show-current } | complete | get stdout | str trim
+    let git_branch_segment = if ($git_branch | str length) == 0 { "" } else { $" (ansi purple) ($git_branch)" }
+    # let git_status = if (git status -s | lines | length) == 0 { "" } else { $"(ansi red)[!]" }
+    let git_status = do { git status -s } | complete | get stdout | lines | each { |l| $l | str substring 0..2 } | uniq | str join "|"
+    let git_status_segment = if ($git_status | lines | length) == 0 { "" } else { $git_status | $"(ansi red)[($in)]" }
+    
+    let git_segment = [$git_branch_segment $git_status_segment] | str join " "
 
     $"($path_segment)($git_segment) "
 }
