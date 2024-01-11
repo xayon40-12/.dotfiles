@@ -761,16 +761,21 @@ $env.config = {
     ]
 }
 
+
 alias pf = sudo poweroff
 alias se = sudoedit
-alias e = run-external $env.EDITOR
+# alias e = run-external $env.EDITOR
+alias e = helix
 alias zshrc = e ~/.zshrc
 alias zshlocal = e ~/.zsh_local
 alias o = open # >/dev/null 2>&1
 alias cargogitinstall = cargo install --path (git rev-parse --show-toplevel)
 alias smount = sudo mount -o gid=users,fmask=113,dmask=002
 alias sumount = sudo umount
-alias ssht = TERM=xterm-256color ssh
+def ssht [...args] {
+    $env.TERM = "xterm-256color";
+    ssh $args
+}
 alias sym = ipython -i ~/.sympy_setup_mat.py
 alias bcd = builtin cd
 alias n = e ~/notes/notes.md
@@ -788,3 +793,5 @@ def --env cd [dir = "~"] {
   core-cd $dir
   pwd | save -f ~/.current_term_dir
 }
+
+source ~/.nu_local.nu

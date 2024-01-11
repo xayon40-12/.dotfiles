@@ -90,14 +90,10 @@ $env.ENV_CONVERSIONS = {
     }
 }
 
-# nupm
-$env.NUPM_HOME = ($nu.default-config-dir | path join "nupm")
-
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
 $env.NU_LIB_DIRS = [
     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
-    ($env.NUPM_HOME | path join "modules")
 ]
 
 # Directories to search for plugin binaries when calling register
@@ -108,11 +104,14 @@ $env.NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 $env.PATH = (
-    $env.PATH 
+    $env.PATH
     | split row (char esep) 
-    | prepend ($env.NUPM_HOME 
-    | path join "scripts") 
-    | uniq
+    | prepend "~/u"
+    | prepend "~/.local/bin"
+    | prepend "~/.cargo/bin"
+    | prepend "~/.ghcup/bin"
 )
 
-
+$env.EDITOR = helix
+$env.COUNTRY = france
+$env.LC_NUMERIC = en_US.UTF-8
