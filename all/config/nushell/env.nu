@@ -32,7 +32,7 @@ def create_left_prompt [] {
     let git_status = do { git status -s } | complete | get stdout | lines | each { |l| $l | str substring 0..2 } | uniq | str join "|"
     let git_status_segment = if ($git_status | lines | length) == 0 { "" } else { $git_status | $"(ansi red)[($in)]" }
     
-    let git_segment = [$git_branch_segment $git_status_segment] | str join " "
+    let git_segment = [$git_branch_segment $git_status_segment] | str join " " | str trim
 
     $"($path_segment)($git_segment) "
 }
