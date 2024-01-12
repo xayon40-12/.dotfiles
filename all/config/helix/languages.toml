@@ -13,3 +13,15 @@ config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
 [[language]]
 name = "markdown"
 language-servers = [ "mdpls", "marksman" ]
+
+[language-server.uiua]
+command = "uiua"
+args = ["lsp"]
+
+[[language]]
+name = "uiua"
+scope = "source.ua"
+roots = ["main.ua"]
+file-types = ["ua"]
+language-servers = ["uiua"]
+auto-format = true
