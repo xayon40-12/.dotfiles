@@ -3,3 +3,11 @@ name = "markdown"
 language-server = { command = "mdpls" }
 # config = { markdown.preview.auto = true, markdown.preview.browser = "firefox"}
 config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
+
+[[language]]
+name = "uiua"
+scope = "source.ua"
+roots = ["main.ua"]
+file-types = ["ua"]
+language-server = { command = "uiua", args = ["lsp"] }
+auto-format = true

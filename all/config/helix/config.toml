@@ -16,3 +16,7 @@ smart-case = false
 render = true
 character = "┊" # "▏", "┊", "⸽"
 skip-levels = 0
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = false
