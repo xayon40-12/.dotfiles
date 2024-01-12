@@ -5,10 +5,6 @@ if [[ "$(tty)" =~ "^/dev/tty(1|2)$" ]]; then
     exit 0
 fi
 
-if [[ -f ~/.zsh_local ]] ; then
-    . ~/.zsh_local
-fi
-
 # ************************ ZSH CONFIG ************************
 
 # history
@@ -73,16 +69,11 @@ alias pf="sudo poweroff"
 
 # editors
 alias se='sudoedit'
-alias nv='nvim'
 export EDITOR=hx #$(if command -v nvim &> /dev/null; then echo nvim; else echo vim; fi) #'emacsclient -t -a ""'
 alias e=$EDITOR
-ew() {emacsclient -c -a "" $* & disown}
 
 # config files
-alias vimrc="$EDITOR ~/.vim/vimrc"
-alias nvimrc="$EDITOR ~/.config/nvim/init.vim"
 alias zshrc="$EDITOR ~/.zshrc"
-alias kakrc="$EDITOR ~/.config/kak/kakrc"
 alias zshlocal="$EDITOR ~/.zsh_local"
 
 # color alias
@@ -91,39 +82,28 @@ alias grep='grep --color=auto'
 
 
 if [[ `uname` == "Darwin" ]]; then
-  alias o='open >/dev/null 2>&1'
+
 else
+  #open files with type detection
+  alias open="handlr open" #"xdg-open"
+
   #terminal clipboard (need to install xclip)
   alias pbcopy="xclip -selection c"
   alias pbpaste="xclip -selection clipboard -o"
 fi
 
-#open files with type detection
-
-if command -v handlr &> /dev/null; then
-  alias open="handlr open" #"xdg-open"
-fi
 alias o='open >/dev/null 2>&1'
-
-# rust
-docrs() { firefox "https://docs.rs/$1" }
-alias cb="cargo build"
-alias cr="cargo run"
-alias cbr="cargo build --release"
-alias ct="RUSTFLAGS=\"$RUSTFLAGS -A dead_code\" cargo test -- --nocapture"
-alias cs="cargo script"
 
 # utilities
 export PATH=~/u:$PATH
-export PATH="$HOME/.local/bin:$PATH"
-alias dev='cd $(cat ~/.current_dev)'
-alias sdev='pwd > ~/.current_dev'
+export PATH=~/.local/bin:$PATH
 
 #disable legacy terminal xon (ctrl-s and ctrl-q)
 stty -ixon
 
 # rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
+alias cargogitinstall='cargo install --path $(git rev-parse --show-toplevel)'
 
 # mount
 alias smount='sudo mount -o gid=users,fmask=113,dmask=002'
@@ -134,16 +114,15 @@ alias ssht='TERM=xterm-256color ssh'
 
 #sympy
 alias sym='ipython -i ~/.sympy_setup_mat.py'
-alias symphy='ipython -i ~/.sympy_setup_phy.py'
-
-# launch neofetch when terminal start
-#neofetch
 
 #start terminal in preceding directory
+alias bcd='builtin cd'
 function cd() {
     builtin cd $1
     pwd > ~/.current_term_dir
 }
+
+# zoxide
 eval "$(zoxide init bash)"
 function z() {
   __zoxide_z $@
@@ -154,9 +133,10 @@ function zi() {
   pwd > ~/.current_term_dir
 }
 cd "$(cat ~/.current_term_dir)"
-# for d in d p x y z w dl; do
-#     alias $d="cd ~/$d"
-# done
+
+for d in d p x y z w dl; do
+    alias $d="cd ~/$d"
+done
 
 #ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
@@ -182,7 +162,7 @@ alias hswatchtest="find . -name '*.hs' | entr -rc stack test"
 alias hs="ptghci"
 
 #update pacman mirror list
-export country=japan
+export country=france
 alias pacmirror='sudo reflector --verbose --country '$country' -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist'
 
 #terminal program alias
@@ -200,6 +180,10 @@ alias icat="kitty +kitten icat"
 
 
 
+
+if [[ -f ~/.zsh_local ]] ; then
+    . ~/.zsh_local
+fi
 
 #WARING must stay at the end
 #starship prompt
