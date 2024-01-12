@@ -762,20 +762,20 @@ $env.config = {
 }
 
 
+alias core-cd = cd
+core-cd (open -r ~/.current_term_dir)
+def --env cd [dir = "~"] { core-cd $dir; pwd | save -f ~/.current_term_dir } 
 alias pf = sudo poweroff
 alias se = sudoedit
-# alias e = run-external $env.EDITOR
 alias e = helix
 alias zshrc = e ~/.zshrc
 alias zshlocal = e ~/.zsh_local
 alias o = open # >/dev/null 2>&1
 alias cargogitinstall = cargo install --path (git rev-parse --show-toplevel)
+def gitroot [f: closure] { core-cd (git rev-parse --show-toplevel); do $f }
 alias smount = sudo mount -o gid=users,fmask=113,dmask=002
 alias sumount = sudo umount
-def ssht [...args] {
-    $env.TERM = "xterm-256color";
-    ssh $args
-}
+def ssht [...args] { $env.TERM = "xterm-256color"; ssh $args }
 alias sym = ipython -i ~/.sympy_setup_mat.py
 alias bcd = builtin cd
 alias n = e ~/notes/notes.md
@@ -787,11 +787,5 @@ alias hs = ptghci
 alias pacmirror = sudo reflector --verbose --country $env.country -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist
 def size [] { du -a --max-depth 1 | sort-by physical }
 alias icat = kitty +kitten icat
-alias core-cd = cd
-core-cd (open ~/.current_term_dir)
-def --env cd [dir = "~"] {
-  core-cd $dir
-  pwd | save -f ~/.current_term_dir
-}
 
 source ~/.nu_local.nu
