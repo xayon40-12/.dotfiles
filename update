@@ -31,3 +31,11 @@ if [[ $1 == "arch" ]]; then
     done
   popd
 fi
+
+if [[ $1 == "macos" ]]; then
+  pushd macos
+    for i in **/*; do
+      update $i
+    done
+  popd
+fi
