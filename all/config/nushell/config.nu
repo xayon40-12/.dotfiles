@@ -314,7 +314,7 @@ $env.config = {
 
 
 alias core-cd = cd
-core-cd (open -r ~/.current_term_dir)
+try { core-cd (open -r ~/.current_term_dir) }
 def --env cd [dir = "~"] { core-cd $dir; pwd | save -f ~/.current_term_dir } 
 alias pf = sudo poweroff
 alias se = sudoedit
