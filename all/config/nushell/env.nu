@@ -21,6 +21,7 @@ def create_left_prompt [] {
         }
     )
 
+    let host_segment = $"(whoami)"
     let path_color = (if (is-admin) { ansi red_bold } else { ansi green_bold })
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)"
@@ -44,7 +45,7 @@ def create_left_prompt [] {
         " "
     ] | str join)
     } else { "" }
-    [$first_line "\n\r" $last_exit_code] | str join
+    [$host_segment ":" $first_line "\n\r" $last_exit_code] | str join
 }
 
 # Use nushell functions to define your right and left prompt
