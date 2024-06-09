@@ -345,7 +345,7 @@ try { core-cd (open -r ~/.current_term_dir) }
 def --env cd [dir = "~"] { core-cd $dir; pwd | save -f ~/.current_term_dir } 
 alias pf = sudo poweroff
 alias se = sudoedit
-alias e = helix
+alias e = hx
 alias zshrc = e ~/.zshrc
 alias zshlocal = e ~/.zsh_local
 alias o = open # >/dev/null 2>&1
