@@ -364,8 +364,8 @@ def hswatchtest [] { glob **/*.hs | to text | entr -rc stack test }
 alias hs = ptghci
 alias pacmirror = sudo reflector --verbose --country $env.country -l 15 -p http --sort rate --save /etc/pacman.d/mirrorlist
 def size [] { du -a --max-depth 1 | sort-by physical }
-alias icat = kitty +kitten icat
-alias cclean = gitroot { cargo clean -p $"(open Cargo.toml | get package.name)" }
+alias icat = kitty '+kitten' icat
+def cclean [] { cargo locate-project | from json | get root | open | get package.name | xargs cargo clean -p }
 alias rd = cd $"(glob ** -F | to text | fzf)" 
 
 source ~/.nu_local.nu

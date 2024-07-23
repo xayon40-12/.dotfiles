@@ -1,0 +1,1 @@
+shell = { program = "/usr/local/bin/nu", args = ["-l"] }

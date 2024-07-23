@@ -25,3 +25,14 @@ roots = ["main.ua"]
 file-types = ["ua"]
 language-servers = ["uiua"]
 auto-format = true
+
+[[language]]
+name="bend"
+auto-format=true
+scope="source.bend"
+file-types=["bend"]
+roots=[]
+
+[[grammar]]
+name="bend"
+source={git="https://github.com/atomheartother/tree-sitter-bend.git", rev="3fda267484f868aacea6ea609adac4954f240d41"}
