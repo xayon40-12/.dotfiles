@@ -107,12 +107,13 @@ def do_path [p] {
         | prepend "~/.local/bin"
         | prepend "~/.cargo/bin"
         | prepend "~/.ghcup/bin"
+        | prepend "/usr/bin"
     )
 }
 if ((sys host | get name) == Windows) {
-    $env.Path = do_path($env.Path)
+    $env.Path = (do_path $env.Path)
 } else {
-    $env.PATH = do_path($env.PATH)
+    $env.PATH = (do_path $env.PATH)
 }
 
 $env.EDITOR = hx

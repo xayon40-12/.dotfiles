@@ -339,7 +339,6 @@ $env.config = {
     ]
 }
 
-
 alias core-cd = cd
 try { core-cd (open -r ~/.current_term_dir) }
 def --env cd [dir = "~"] { core-cd $dir; pwd | save -f ~/.current_term_dir } 

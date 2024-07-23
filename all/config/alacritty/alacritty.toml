@@ -1,1 +1,5 @@
 shell = { program = "/usr/local/bin/nu", args = ["-l"] }
+import = [
+  # "~/.config/alacritty/themes/hardhacker.toml",
+  "~/.config/alacritty/themes/monokai_pro.toml",
+]
