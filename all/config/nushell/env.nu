@@ -99,15 +99,22 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-$env.PATH = (
-    $env.PATH
-    | split row (char esep) 
-    | prepend "~/u"
-    | prepend "~/.local/bin"
-    | prepend "~/.cargo/bin"
-    | prepend "~/.ghcup/bin"
-)
+def do_path [p] {
+    (
+        $p
+        | split row (char esep) 
+        | prepend "~/u"
+        | prepend "~/.local/bin"
+        | prepend "~/.cargo/bin"
+        | prepend "~/.ghcup/bin"
+    )
+}
+if ((sys host | get name) == Windows) {
+    $env.Path = do_path($env.Path)
+} else {
+    $env.PATH = do_path($env.PATH)
+}
 
-$env.EDITOR = helix
+$env.EDITOR = hx
 $env.COUNTRY = france
 $env.LC_NUMERIC = en_US.UTF-8
