@@ -9,12 +9,13 @@ update() {
         rm "$HOME/.$1.OLD"
     fi
     if [[ -f "$HOME/.$1" ]]; then
-        mv "$HOME/.$1" "$HOME/.$1.OLD"
+        cp -L "$HOME/.$1" "$HOME/.$1.OLD"
+        rm "$HOME/.$1"
     fi
     if [[ $1 =~ / ]]; then
         mkdir -p "$HOME/.${1%/*}"
     fi
-    ln "$1" "$HOME/.$1"
+    ln -s $(pwd)/"$1" "$HOME/.$1"
   fi
 }
 

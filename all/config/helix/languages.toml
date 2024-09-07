@@ -36,3 +36,10 @@ roots=[]
 [[grammar]]
 name="bend"
 source={git="https://github.com/atomheartother/tree-sitter-bend.git", rev="3fda267484f868aacea6ea609adac4954f240d41"}
+
+[[language]]
+name = "lam3"
+scope = "source.lam3"
+roots = ["main.lam3"]
+file-types = ["lam3"]
+comment-tokens = "--"
