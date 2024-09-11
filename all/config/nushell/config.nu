@@ -350,7 +350,7 @@ alias zshlocal = e ~/.zsh_local
 alias o = open # >/dev/null 2>&1
 alias cargogitinstall = cargo install --path (git rev-parse --show-toplevel)
 def gitroot [f: closure] { core-cd (git rev-parse --show-toplevel); do $f }
-alias smount = sudo mount -o gid=users,fmask=113,dmask=002
+alias smount = sudo mount -o $"uid=(whoami)" # -o $"gid=(whoami)"
 alias sumount = sudo umount
 def ssht [...args] { $env.TERM = "xterm-256color"; ssh ...$args }
 alias sym = ipython -i ~/.sympy_setup_mat.py
