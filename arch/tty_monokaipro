@@ -1,0 +1,43 @@
+#!/bin/sh
+
+if [ "$TERM" = "linux" ]; then
+    # dull black
+    printf "\033]P0403e41"
+    # light black
+    printf "\033]P8727072"
+
+    # dull red
+    printf "\033]P1ff6188"
+    # light red
+    printf "\033]P9ff6188"
+
+    # dull green
+    printf "\033]P2a9dc76"
+    # light green
+    printf "\033]PAa9dc76"
+
+    # yellow
+    printf "\033]P3ffd866"
+    # light yellow
+    printf "\033]PBffd866"
+
+    # blue
+    printf "\033]P4fc9867"
+    # light blue
+    printf "\033]PCfc9867"
+
+    # magenta
+    printf "\033]P5ab9df2"
+    # light magenta
+    printf "\033]PDab9df2"
+
+    # cyan
+    printf "\033]P678dce8"
+    # light cyan
+    printf "\033]PE78dce8"
+
+    # dull white
+    printf "\033]P7fcfcfa"
+    # bright white
+    printf "\033]PFfcfcfa"
+fi
