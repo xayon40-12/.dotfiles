@@ -40,4 +40,6 @@ if [ "$TERM" = "linux" ]; then
     printf "\033]P7fcfcfa"
     # bright white
     printf "\033]PFfcfcfa"
+
+    clear
 fi
