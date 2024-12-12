@@ -116,6 +116,6 @@ if ((sys host | get name) == Windows) {
     $env.PATH = (do_path $env.PATH)
 }
 
-$env.EDITOR = hx
-$env.COUNTRY = france
-$env.LC_NUMERIC = en_US.UTF-8
+$env.EDITOR = "hx"
+$env.COUNTRY = "france"
+$env.LC_NUMERIC = "en_US.UTF-8"
