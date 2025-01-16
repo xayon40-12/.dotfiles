@@ -8,13 +8,18 @@ cursorcolumn = true
 auto-save = true
 idle-timeout = 100
 bufferline = "multiple"
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+other-lines = "warning"
 
 [editor.search]
 smart-case = false
 
 [editor.indent-guides]
 render = true
-character = "┊" # "▏", "┊", "⸽"
+character = "┊"
 skip-levels = 0
 
 [editor.lsp]

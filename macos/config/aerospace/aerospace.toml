@@ -3,7 +3,7 @@
 # defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 
 # Start AeroSpace at login
-start-at-login = false
+start-at-login = true
 
 after-startup-command = [
   #'exec-and-forget sketchybar',
@@ -95,7 +95,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-semicolon = 'mode service'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-alt-enter = 'exec-and-forget open -n /Applications/kitty.app'
+alt-enter = 'exec-and-forget open -n /Applications/alacritty.app'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -104,9 +104,11 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 
 [workspace-to-monitor-force-assignment]
+7 = 'secondary'
+8 = 'secondary'
 9 = 'secondary'
 
 [[on-window-detected]]
 # if.app-id = 'com.apple.systempreferences'
 if.app-name-regex-substring = 'discord'
-run = ['move-node-to-workspace 9']  # The callback itself
+run = ['move-node-to-workspace 8']  # The callback itself
