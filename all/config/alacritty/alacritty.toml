@@ -1,4 +1,4 @@
-shell = { program = "/usr/local/bin/nu", args = ["-l"] }
+shell = { program = "/opt/homebrew/bin/nu", args = ["-l"] }
 import = [
   "~/.config/alacritty/themes/monokai_pro.toml",
 ]
