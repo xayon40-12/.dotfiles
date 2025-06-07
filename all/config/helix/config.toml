@@ -1,4 +1,5 @@
-theme = "monokai_pro"
+# theme = "monokai_pro"
+theme = "catppuccin_mocha"
 
 [editor]
 soft-wrap.enable = true
@@ -11,8 +12,8 @@ bufferline = "multiple"
 end-of-line-diagnostics = "hint"
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
-other-lines = "warning"
+cursor-line = "hint"
+# other-lines = "error"
 
 [editor.search]
 smart-case = false
@@ -25,3 +26,6 @@ skip-levels = 0
 [editor.lsp]
 display-messages = true
 display-inlay-hints = false
+
+[keys.normal." "]
+l = [":pipe-to add_to_ltex_dict", ":config-reload", ":lsp-restart"]

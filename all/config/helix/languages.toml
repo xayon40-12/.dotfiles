@@ -43,3 +43,16 @@ scope = "source.lam3"
 roots = ["main.lam3"]
 file-types = ["lam3"]
 comment-tokens = "--"
+
+[[language]]
+name = "latex"
+language-servers = ["ltex"]
+
+[language-server.ltex]
+command = "/Users/xayon/aur/ltex-ls-16.0.0/bin/ltex-ls"
+config.ltex.dictionary = {"en-US" = ["Eq","Eqs","Cha","Chas","Gubser","RK"]}
+
+[language-server.tinymist]
+command = "tinymist"
+# config = { exportPdf = "onType" }
+# config = { exportPdf = "onSave" }
