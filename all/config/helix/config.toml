@@ -27,5 +27,13 @@ skip-levels = 0
 display-messages = true
 display-inlay-hints = false
 
-[keys.normal." "]
+[keys.normal.space]
+t = ["yank_to_clipboard", ":sh pbpaste | xargs sdcv -u org.edrdg.jmdict-jpn-eng -n"]
+
+[keys.select.space]
+t = ["yank_to_clipboard", ":sh pbpaste | xargs sdcv -u org.edrdg.jmdict-jpn-eng -n"]
+
+[keys.normal.space.l]
 l = [":pipe-to add_to_ltex_dict", ":config-reload", ":lsp-restart"]
+w = ":lsp-workspace-command"
+p = ":lsp-workspace-command tinymist.startDefaultPreview"
