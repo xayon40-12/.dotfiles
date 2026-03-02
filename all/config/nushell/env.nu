@@ -119,3 +119,8 @@ if ((sys host | get name) == Windows) {
 $env.EDITOR = "hx"
 $env.COUNTRY = "france"
 $env.LC_NUMERIC = "en_US.UTF-8"
+
+# Use carapace https://carapace-sh.github.io/carapace-bin/carapace-bin.html for completion in nushell
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+mkdir $"($nu.cache-dir)"
+carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"

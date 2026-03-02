@@ -113,3 +113,6 @@ def cclean [] { cargo locate-project | from json | get root | open | get package
 alias rd = cd $"(glob ** -F | to text | fzf)" 
 
 source ~/.nu_local.nu
+
+# Use carapace https://carapace-sh.github.io/carapace-bin/carapace-bin.html for completion in nushell
+source $"($nu.cache-dir)/carapace.nu"
