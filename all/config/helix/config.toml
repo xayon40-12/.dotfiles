@@ -37,3 +37,4 @@ t = ["yank_to_clipboard", ":sh pbpaste | xargs sdcv -u org.edrdg.jmdict-jpn-eng 
 l = [":pipe-to add_to_ltex_dict", ":config-reload", ":lsp-restart"]
 w = ":lsp-workspace-command"
 p = ":lsp-workspace-command tinymist.startDefaultPreview"
+r = ":run-shell-command nu -c \"cd %sh{dirname '%{buffer_name}'}; love .\""

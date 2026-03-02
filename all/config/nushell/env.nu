@@ -107,7 +107,7 @@ def do_path [p] {
         | prepend "~/.local/bin"
         | prepend "~/.cargo/bin"
         | prepend "~/.ghcup/bin"
-        | prepend "/usr/bin"
+        | append "/usr/bin"
     )
 }
 if ((sys host | get name) == Windows) {
