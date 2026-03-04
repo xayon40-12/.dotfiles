@@ -10,9 +10,16 @@ language-servers = [ "nu" ]
 command = "mdpls" 
 config = { markdown.preview.auto = true, markdown.preview.serveStatic	= true}
 
+[language-server.mpls]
+# https://github.com/mhersson/mpls
+# brew tap mhersson/formulas
+# brew install mpls
+command = "mpls"
+args = ["--theme", "tokyonight", "--enable-emoji"]
+
 [[language]]
 name = "markdown"
-language-servers = [ "mdpls", "marksman" ]
+language-servers = [ "mpls", "marksman" ]
 
 [language-server.uiua]
 command = "uiua"
