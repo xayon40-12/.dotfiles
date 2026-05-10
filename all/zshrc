@@ -179,8 +179,6 @@ alias icat="kitty +kitten icat"
 
 
 
-
-
 if [[ -f ~/.zsh_local ]] ; then
     . ~/.zsh_local
 fi
@@ -188,3 +186,6 @@ fi
 #WARING must stay at the end
 #starship prompt
 eval "$(starship init zsh)"
+
+# OpenReality CLI
+export PATH="/Users/xayon/.openreality/bin:$PATH"
