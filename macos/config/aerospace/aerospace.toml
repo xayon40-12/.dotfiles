@@ -121,3 +121,7 @@ run = ['move-node-to-workspace 7']  # The callback itself
 [[on-window-detected]]
 if.app-name-regex-substring = 'renderer'
 run = ['layout floating']  # The callback itself
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'julia'
+run = ['layout floating', 'move-node-to-workspace back']  # The callback itself

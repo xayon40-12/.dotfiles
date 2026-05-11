@@ -174,17 +174,28 @@ export LC_NUMERIC=en_US.UTF-8
 alias size='du -h --max-depth 1 | sort -h'
 alias icat="kitty +kitten icat"
 
-
-
-
-
-
-
-
 if [[ -f ~/.zsh_local ]] ; then
     . ~/.zsh_local
 fi
 
+
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/travail/.juliaup/bin' $path)
+export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/Users/travail/.julia/juliaup/completions/zsh.zsh" ] && source "/Users/travail/.julia/juliaup/completions/zsh.zsh"
+
+# <<< juliaup initialize <<<
+
+
+
+
+
 #WARING must stay at the end
 #starship prompt
 eval "$(starship init zsh)"
+

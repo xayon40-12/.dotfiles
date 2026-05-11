@@ -63,3 +63,12 @@ config.ltex.dictionary = {"en-US" = ["Eq","Eqs","Cha","Chas","Gubser","RK"]}
 command = "tinymist"
 # config = { exportPdf = "onType" }
 # config = { exportPdf = "onSave" }
+
+[[language]]
+name = "julia"
+language-servers = [ "jetls" ]
+formatter = { command = "runic" }
+auto-format = true
+
+[language-server]
+jetls = { command = "jetls", args = ["serve"] }
