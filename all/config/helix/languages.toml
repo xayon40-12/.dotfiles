@@ -65,6 +65,18 @@ command = "tinymist"
 # config = { exportPdf = "onSave" }
 
 [[language]]
+name = "devicetree"
+scope = "source.dts"
+injection-regex = "dts"
+file-types = ["dts", "dtsi", "keymap"] # Adds .keymap support
+roots = [".git"]
+language-servers = [ "dt-lsp" ]
+
+[language-server.dt-lsp]
+command = "dt-language-server"
+args = ["--stdio"]
+
+[[language]]
 name = "julia"
 language-servers = [ "jetls" ]
 formatter = { command = "runic" }
